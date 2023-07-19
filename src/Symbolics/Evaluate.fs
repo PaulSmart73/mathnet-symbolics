@@ -126,6 +126,8 @@ module Evaluate =
         | ComplexInf, Infinity | Infinity, ComplexInf -> ComplexInf
         | Infinity, PosInf -> ComplexInf
         | Infinity, NegInf -> Real (0.0)
+        | PosInf, _ | _, PosInf -> PosInf
+        | NegInf, _ | _, NegInf -> NegInf
         | _ -> failwith "not supported"
 
     let fapply f u =
