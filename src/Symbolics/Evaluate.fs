@@ -118,6 +118,7 @@ module Evaluate =
     let fpower u v =
         match u, v with
         | Real x, Real y when x < 0.0 && (y%1.0 <> 0.0) -> Complex (Complex.pow (complex y 0.0) (complex x 0.0))
+        | Real x, Real y when x = 0.0 && y < 0.0 -> Undef
         | Real x, Real y -> Real (Math.Pow(x, y))
         | Complex x, Real y -> Complex (Complex.pow (complex y 0.0) x)
         | Real x, Complex y -> Complex (Complex.pow y (complex x 0.0))
